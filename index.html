@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dream Team Beach Academy — Excellence & Formation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy: '#0B1B3D',
+        navy2: '#122a5c',
+        orange: '#F26522',
+        gold: '#F5B041',
+        ocean: '#1E73BE',
+        sand: '#F8FAFC'
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        display: ['Oswald', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; }
+  .font-display { font-family: 'Oswald', sans-serif; letter-spacing: 0.02em; }
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn 0.5s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .carousel-track { display: flex; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
+  .carousel-slide { min-width: 100%; }
+  .overlay-navy { background: linear-gradient(180deg, rgba(11,27,61,0.75) 0%, rgba(11,27,61,0.55) 50%, rgba(11,27,61,0.9) 100%); }
+  .overlay-orange { background: linear-gradient(135deg, rgba(242,101,34,0.9) 0%, rgba(11,27,61,0.85) 100%); }
+  .marquee { display: flex; animation: scroll 30s linear infinite; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .hover-lift { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(11,27,61,0.15); }
+  .dot.active { background: #F26522 !important; width: 24px !important; }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #0B1B3D; }
+  ::-webkit-scrollbar-thumb { background: #F26522; border-radius: 4px; }
+  .logo-img { object-fit: contain; }
+
+  /* ====== HEADER PRO ====== */
+  .header-nav-link {
+    position: relative;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #E5E7EB;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+  }
+  .header-nav-link:hover {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .header-nav-link.active {
+    color: #F26522;
+    background: rgba(242, 101, 34, 0.08);
+  }
+  .header-nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    background: #F26522;
+    border-radius: 50%;
+  }
+
+  .btn-header-primary {
+    background: #F26522;
+    color: #FFFFFF;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 14px rgba(242, 101, 34, 0.25);
+    cursor: pointer;
+    border: 1px solid #F26522;
+  }
+  .btn-header-primary:hover {
+    background: #F5B041;
+    border-color: #F5B041;
+    color: #0B1B3D;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245, 176, 65, 0.4);
+  }
+  .btn-header-primary svg { transition: transform 0.3s; }
+  .btn-header-primary:hover svg { transform: translateX(3px); }
+
+  .btn-header-outline {
+    background: transparent;
+    color: #FFFFFF;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+  }
+  .btn-header-outline:hover {
+    border-color: #F26522;
+    color: #F26522;
+    background: rgba(242, 101, 34, 0.08);
+  }
+
+  .header-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #E5E7EB;
+    transition: all 0.25s;
+    border: 1px solid transparent;
+  }
+  .mobile-nav-link:hover, .mobile-nav-link.active {
+    color: #F26522;
+    background: rgba(242, 101, 34, 0.08);
+    border-color: rgba(242, 101, 34, 0.2);
+  }
+
+  .hamburger-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+  }
+  .hamburger-btn:hover {
+    background: rgba(242, 101, 34, 0.15);
+    border-color: rgba(242, 101, 34, 0.3);
+  }
+</style>
+</head>
+<body class="bg-sand text-navy">
+
+<!-- ============================================================ -->
+<!-- NAVBAR PRO -->
+<!-- ============================================================ -->
+<nav class="bg-navy text-white sticky top-0 z-50 shadow-2xl">
+  <div class="h-[3px] bg-gradient-to-r from-orange via-gold to-orange"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 lg:px-6">
+    <div class="flex justify-between items-center h-24">
+      
+      <!-- LOGO -->
+      <a onclick="showPage('accueil')" class="cursor-pointer flex items-center gap-4 shrink-0 group">
+        <img src="logo.jpg" alt="Dream Team Beach Academy" class="h-16 lg:h-20 w-auto logo-img transition-transform duration-300 group-hover:scale-105">
+        <div class="hidden md:flex flex-col leading-none">
+          <span class="font-display font-bold text-xl lg:text-2xl tracking-wider">DREAM TEAM</span>
+          <span class="text-[10px] tracking-[0.3em] text-orange uppercase font-semibold mt-1.5">Beach Academy</span>
+        </div>
+      </a>
+      
+      <!-- NAV LINKS Desktop XL -->
+      <div class="hidden xl:flex items-center gap-1">
+        <a onclick="showPage('accueil')" class="header-nav-link cursor-pointer" data-page="accueil">Accueil</a>
+        <a onclick="showPage('academy')" class="header-nav-link cursor-pointer" data-page="academy">L'Academy</a>
+        <a onclick="showPage('formations')" class="header-nav-link cursor-pointer" data-page="formations">Formations</a>
+        <a onclick="showPage('inscriptions')" class="header-nav-link cursor-pointer" data-page="inscriptions">Inscriptions</a>
+        <a onclick="showPage('vie')" class="header-nav-link cursor-pointer" data-page="vie">Vie Sportive</a>
+        <a onclick="showPage('actualites')" class="header-nav-link cursor-pointer" data-page="actualites">Médias</a>
+        <a onclick="showPage('contact')" class="header-nav-link cursor-pointer" data-page="contact">Contact</a>
+      </div>
+      
+      <!-- ACTIONS Desktop LG+ -->
+      <div class="hidden lg:flex items-center gap-3 shrink-0">
+        <a onclick="showPage('membre')" class="btn-header-outline cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+          </svg>
+          Espace Membre
+        </a>
+        <div class="header-divider hidden lg:block"></div>
+        <a onclick="showPage('inscriptions')" class="btn-header-primary cursor-pointer">
+          S'inscrire
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+      </div>
+      
+      <!-- BURGER -->
+      <button onclick="toggleMobile()" class="lg:hidden hamburger-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      
+    </div>
+  </div>
+  
+  <!-- MENU MOBILE -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-navy border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 py-6 space-y-2">
+      <a onclick="showPage('accueil')" class="mobile-nav-link cursor-pointer" data-page="accueil">
+        Accueil
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <a onclick="showPage('academy')" class="mobile-nav-link cursor-pointer" data-page="academy">
+        L'Academy
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <a onclick="showPage('formations')" class="mobile-nav-link cursor-pointer" data-page="formations">
+        Formations
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <a onclick="showPage('inscriptions')" class="mobile-nav-link cursor-pointer" data-page="inscriptions">
+        Inscriptions
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <a onclick="showPage('vie')" class="mobile-nav-link cursor-pointer" data-page="vie">
+        Vie Sportive
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <a onclick="showPage('actualites')" class="mobile-nav-link cursor-pointer" data-page="actualites">
+        Médias
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      <a onclick="showPage('contact')" class="mobile-nav-link cursor-pointer" data-page="contact">
+        Contact
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </a>
+      
+      <div class="pt-4 mt-4 border-t border-white/10 flex flex-col gap-3">
+        <a onclick="showPage('membre')" class="btn-header-outline cursor-pointer justify-center w-full">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+          </svg>
+          Espace Membre
+        </a>
+        <a onclick="showPage('inscriptions')" class="btn-header-primary cursor-pointer justify-center w-full">
+          S'inscrire
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================ -->
+<!-- PAGE ACCUEIL -->
+<!-- ============================================================ -->
+<div id="page-accueil" class="page active">
+
+  <!-- HERO CAROUSEL -->
+  <section class="relative h-[85vh] overflow-hidden">
+    <div id="hero-carousel" class="carousel-track h-full">
+      <div class="carousel-slide relative h-full">
+        <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Football">
+        <div class="absolute inset-0 overlay-navy"></div>
+        <div class="relative h-full flex items-center">
+          <div class="max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-3xl">
+              <span class="inline-block bg-orange text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6">Saison 2026 — Inscriptions ouvertes</span>
+              <h1 class="font-display text-5xl md:text-7xl font-bold text-white uppercase leading-none mb-6">Forger les<br><span class="text-orange">champions</span> de demain</h1>
+              <p class="text-gray-200 text-lg mb-8 max-w-2xl">Rejoignez une académie d'excellence dédiée au football de plage. Formation, discipline et passion au cœur de notre projet.</p>
+              <div class="flex flex-wrap gap-4">
+                <a onclick="showPage('inscriptions')" class="cursor-pointer bg-orange hover:bg-gold hover:text-navy text-white px-8 py-4 rounded-full font-bold uppercase text-sm tracking-wider transition">Rejoindre l'academy</a>
+                <a onclick="showPage('academy')" class="cursor-pointer border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-4 rounded-full font-bold uppercase text-sm tracking-wider transition">Découvrir</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide relative h-full">
+        <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Football">
+        <div class="absolute inset-0 overlay-navy"></div>
+        <div class="relative h-full flex items-center">
+          <div class="max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-3xl">
+              <span class="inline-block bg-ocean text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6">Un cadre exceptionnel</span>
+              <h1 class="font-display text-5xl md:text-7xl font-bold text-white uppercase leading-none mb-6">Le sable<br>comme <span class="text-orange">terrain</span></h1>
+              <p class="text-gray-200 text-lg mb-8 max-w-2xl">Des installations professionnelles en bord de mer pour un apprentissage unique au monde.</p>
+              <a onclick="showPage('academy')" class="cursor-pointer inline-block bg-orange hover:bg-gold hover:text-navy text-white px-8 py-4 rounded-full font-bold uppercase text-sm tracking-wider transition">Nos installations</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide relative h-full">
+        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Football">
+        <div class="absolute inset-0 overlay-navy"></div>
+        <div class="relative h-full flex items-center">
+          <div class="max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-3xl">
+              <span class="inline-block bg-gold text-navy px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6">Encadrement diplômé</span>
+              <h1 class="font-display text-5xl md:text-7xl font-bold text-white uppercase leading-none mb-6">Un staff<br>de <span class="text-orange">professionnels</span></h1>
+              <p class="text-gray-200 text-lg mb-8 max-w-2xl">Des éducateurs diplômés et expérimentés pour accompagner chaque joueur vers son plein potentiel.</p>
+              <a onclick="showPage('formations')" class="cursor-pointer inline-block bg-orange hover:bg-gold hover:text-navy text-white px-8 py-4 rounded-full font-bold uppercase text-sm tracking-wider transition">Voir les formations</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button onclick="heroPrev()" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/30 text-white hover:bg-orange transition flex items-center justify-center text-2xl">‹</button>
+    <button onclick="heroNext()" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur border border-white/30 text-white hover:bg-orange transition flex items-center justify-center text-2xl">›</button>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+      <button onclick="heroGo(0)" class="hero-dot dot active h-2 w-2 rounded-full bg-white/50 transition-all"></button>
+      <button onclick="heroGo(1)" class="hero-dot dot h-2 w-2 rounded-full bg-white/50 transition-all"></button>
+      <button onclick="heroGo(2)" class="hero-dot dot h-2 w-2 rounded-full bg-white/50 transition-all"></button>
+    </div>
+  </section>
+
+  <!-- STATS BAND -->
+  <section class="bg-orange text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div><div class="font-display text-4xl md:text-5xl font-bold">250+</div><div class="text-xs uppercase tracking-widest mt-1 opacity-90">Joueurs formés</div></div>
+      <div><div class="font-display text-4xl md:text-5xl font-bold">15</div><div class="text-xs uppercase tracking-widest mt-1 opacity-90">Éducateurs diplômés</div></div>
+      <div><div class="font-display text-4xl md:text-5xl font-bold">10</div><div class="text-xs uppercase tracking-widest mt-1 opacity-90">Années d'expérience</div></div>
+      <div><div class="font-display text-4xl md:text-5xl font-bold">18</div><div class="text-xs uppercase tracking-widest mt-1 opacity-90">Titres remportés</div></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=900&q=80" class="rounded-lg shadow-2xl w-full h-[500px] object-cover" alt="Entraînement football">
+        <div class="absolute -bottom-8 -right-8 bg-navy text-white p-8 rounded-lg shadow-2xl hidden md:block">
+          <div class="font-display text-5xl font-bold text-orange">10+</div>
+          <div class="text-xs uppercase tracking-widest mt-1">Ans d'excellence</div>
+        </div>
+      </div>
+      <div>
+        <span class="text-orange font-bold uppercase tracking-widest text-sm">Qui sommes-nous</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mt-4 mb-6 leading-tight">Une académie<br>d'exception</h2>
+        <div class="w-20 h-1 bg-orange mb-8"></div>
+        <p class="text-gray-600 mb-6 leading-relaxed">Fondée en 2016, la Dream Team Beach Academy est devenue une référence dans la formation au football de plage. Notre mission : révéler le potentiel de chaque jeune joueur, sur et en dehors du terrain.</p>
+        <p class="text-gray-600 mb-8 leading-relaxed">Nous combinons exigence sportive, suivi scolaire personnalisé et valeurs humaines fortes pour former non seulement des athlètes, mais aussi des hommes et des femmes responsables.</p>
+        <div class="grid grid-cols-2 gap-6 mb-8">
+          <div class="flex items-start gap-3"><div class="w-10 h-10 bg-orange/10 rounded-full flex items-center justify-center text-orange font-bold shrink-0">✓</div><div><div class="font-bold text-navy">Formation Elite</div><div class="text-sm text-gray-500">Encadrement pro</div></div></div>
+          <div class="flex items-start gap-3"><div class="w-10 h-10 bg-orange/10 rounded-full flex items-center justify-center text-orange font-bold shrink-0">✓</div><div><div class="font-bold text-navy">Suivi Scolaire</div><div class="text-sm text-gray-500">Études & sport</div></div></div>
+          <div class="flex items-start gap-3"><div class="w-10 h-10 bg-orange/10 rounded-full flex items-center justify-center text-orange font-bold shrink-0">✓</div><div><div class="font-bold text-navy">Cadre Unique</div><div class="text-sm text-gray-500">Bord de mer</div></div></div>
+          <div class="flex items-start gap-3"><div class="w-10 h-10 bg-orange/10 rounded-full flex items-center justify-center text-orange font-bold shrink-0">✓</div><div><div class="font-bold text-navy">Valeurs Fortes</div><div class="text-sm text-gray-500">Respect & discipline</div></div></div>
+        </div>
+        <a onclick="showPage('academy')" class="cursor-pointer inline-block bg-navy hover:bg-ocean text-white px-8 py-3 rounded-full font-bold uppercase text-sm tracking-wider transition">En savoir plus →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATIONS PREVIEW -->
+  <section class="py-24 bg-navy text-white relative overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover opacity-10" alt="bg">
+    <div class="max-w-7xl mx-auto px-6 relative">
+      <div class="text-center mb-16">
+        <span class="text-orange font-bold uppercase tracking-widest text-sm">Nos programmes</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mt-4 mb-6">Formations par catégorie</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl overflow-hidden hover-lift">
+          <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="U6-U9"></div>
+          <div class="p-6">
+            <div class="text-orange font-display text-3xl font-bold mb-2">U6 - U9</div>
+            <h3 class="text-xl font-bold mb-3">École de Foot</h3>
+            <p class="text-gray-300 text-sm mb-4">Découverte, motricité, plaisir du jeu. L'éveil au football dans un cadre ludique et sécurisé.</p>
+            <a onclick="showPage('formations')" class="cursor-pointer text-orange font-bold text-sm uppercase tracking-wider">Découvrir →</a>
+          </div>
+        </div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl overflow-hidden hover-lift">
+          <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="U10-U13"></div>
+          <div class="p-6">
+            <div class="text-orange font-display text-3xl font-bold mb-2">U10 - U13</div>
+            <h3 class="text-xl font-bold mb-3">Pré-formation</h3>
+            <p class="text-gray-300 text-sm mb-4">Apprentissage technique, tactique et esprit collectif. Les fondations du joueur moderne.</p>
+            <a onclick="showPage('formations')" class="cursor-pointer text-orange font-bold text-sm uppercase tracking-wider">Découvrir →</a>
+          </div>
+        </div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl overflow-hidden hover-lift">
+          <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=600&q=80" class="w-full h-full object-cover hover:scale-110 transition duration-700" alt="U15-U17"></div>
+          <div class="p-6">
+            <div class="text-orange font-display text-3xl font-bold mb-2">U15 - U17</div>
+            <h3 class="text-xl font-bold mb-3">Formation</h3>
+            <p class="text-gray-300 text-sm mb-4">Perfectionnement, compétition et préparation au haut niveau. Objectif : l'élite.</p>
+            <a onclick="showPage('formations')" class="cursor-pointer text-orange font-bold text-sm uppercase tracking-wider">Découvrir →</a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a onclick="showPage('formations')" class="cursor-pointer inline-block border-2 border-orange text-orange hover:bg-orange hover:text-white px-8 py-3 rounded-full font-bold uppercase text-sm tracking-wider transition">Toutes les formations</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="py-24 bg-sand">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="text-orange font-bold uppercase tracking-widest text-sm">Témoignages</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mt-4 mb-6">Ils nous font confiance</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="relative bg-white rounded-2xl shadow-xl p-10 md:p-14 overflow-hidden">
+        <div id="testi-carousel" class="carousel-track">
+          <div class="carousel-slide text-center">
+            <div class="text-6xl text-orange font-serif mb-4">"</div>
+            <p class="text-lg md:text-xl text-gray-700 italic mb-8 leading-relaxed">Mon fils a progressé de manière incroyable en seulement deux saisons. L'encadrement est sérieux, humain et exigeant. Je recommande à 100%.</p>
+            <div class="font-bold text-navy">Marie L.</div>
+            <div class="text-sm text-orange">Maman de Lucas, U13</div>
+          </div>
+          <div class="carousel-slide text-center">
+            <div class="text-6xl text-orange font-serif mb-4">"</div>
+            <p class="text-lg md:text-xl text-gray-700 italic mb-8 leading-relaxed">Un club qui allie performance et valeurs. Le suivi scolaire est un vrai plus pour les familles. Bravo à toute l'équipe.</p>
+            <div class="font-bold text-navy">Karim B.</div>
+            <div class="text-sm text-orange">Papa de Yassine, U15</div>
+          </div>
+          <div class="carousel-slide text-center">
+            <div class="text-6xl text-orange font-serif mb-4">"</div>
+            <p class="text-lg md:text-xl text-gray-700 italic mb-8 leading-relaxed">J'ai rejoint l'academy à 10 ans et aujourd'hui je joue en sélection régionale. Merci aux coachs pour leur patience et leur exigence.</p>
+            <div class="font-bold text-navy">Adam R.</div>
+            <div class="text-sm text-orange">Joueur U17</div>
+          </div>
+        </div>
+        <div class="flex justify-center gap-3 mt-10">
+          <button onclick="testiGo(0)" class="testi-dot dot active h-2 w-2 rounded-full bg-gray-300 transition-all"></button>
+          <button onclick="testiGo(1)" class="testi-dot dot h-2 w-2 rounded-full bg-gray-300 transition-all"></button>
+          <button onclick="testiGo(2)" class="testi-dot dot h-2 w-2 rounded-full bg-gray-300 transition-all"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS PREVIEW -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex justify-between items-end mb-12 flex-wrap gap-4">
+        <div>
+          <span class="text-orange font-bold uppercase tracking-widest text-sm">Actualités</span>
+          <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mt-4">Dernières news</h2>
+        </div>
+        <a onclick="showPage('actualites')" class="cursor-pointer text-navy font-bold uppercase text-sm tracking-wider hover:text-orange transition">Toutes les actus →</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <article class="hover-lift bg-white rounded-xl overflow-hidden shadow-md cursor-pointer">
+          <div class="h-56 overflow-hidden"><img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80" class="w-full h-full object-cover" alt="Match football"></div>
+          <div class="p-6">
+            <span class="text-xs font-bold text-orange uppercase tracking-widest">Résultats</span>
+            <h3 class="font-bold text-lg mt-2 mb-2">Victoire 3-1 en amical face au FC Sable</h3>
+            <p class="text-gray-500 text-sm">Nos U15 poursuivent leur préparation avec sérieux avant le début du championnat...</p>
+          </div>
+        </article>
+        <article class="hover-lift bg-white rounded-xl overflow-hidden shadow-md cursor-pointer">
+          <div class="h-56 overflow-hidden"><img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&q=80" class="w-full h-full object-cover" alt="Football"></div>
+          <div class="p-6">
+            <span class="text-xs font-bold text-orange uppercase tracking-widest">Interview</span>
+            <h3 class="font-bold text-lg mt-2 mb-2">Le coach principal dévoile sa vision</h3>
+            <p class="text-gray-500 text-sm">Objectifs, méthode, philosophie de jeu : entretien exclusif avec notre directeur technique...</p>
+          </div>
+        </article>
+        <article class="hover-lift bg-white rounded-xl overflow-hidden shadow-md cursor-pointer">
+          <div class="h-56 overflow-hidden"><img src="https://images.unsplash.com/photo-1552667466-07770ae110d0?w=600&q=80" class="w-full h-full object-cover" alt="Équipe football"></div>
+          <div class="p-6">
+            <span class="text-xs font-bold text-orange uppercase tracking-widest">Événement</span>
+            <h3 class="font-bold text-lg mt-2 mb-2">Tournoi de fin d'année : inscriptions ouvertes</h3>
+            <p class="text-gray-500 text-sm">Le grand rendez-vous de la saison approche. Réservez votre place dès maintenant...</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="relative py-24 overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Stade">
+    <div class="absolute inset-0 overlay-orange"></div>
+    <div class="relative max-w-4xl mx-auto px-6 text-center text-white">
+      <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6">Prêt à rejoindre l'aventure ?</h2>
+      <p class="text-lg mb-8 opacity-95">Les inscriptions pour la saison 2026 sont ouvertes. Places limitées.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a onclick="showPage('inscriptions')" class="cursor-pointer bg-white text-navy hover:bg-navy hover:text-white px-8 py-4 rounded-full font-bold uppercase text-sm tracking-wider transition">S'inscrire maintenant</a>
+        <a onclick="showPage('contact')" class="cursor-pointer border-2 border-white hover:bg-white hover:text-navy px-8 py-4 rounded-full font-bold uppercase text-sm tracking-wider transition">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="py-16 bg-white border-t">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p class="text-xs font-bold text-gray-400 uppercase tracking-[0.3em] mb-8">Nos partenaires officiels</p>
+      <div class="overflow-hidden">
+        <div class="marquee">
+          <div class="flex gap-16 px-8 shrink-0 items-center">
+            <div class="font-display text-2xl font-bold text-gray-300">NIKE</div>
+            <div class="font-display text-2xl font-bold text-gray-300">ADIDAS</div>
+            <div class="font-display text-2xl font-bold text-gray-300">PUMA</div>
+            <div class="font-display text-2xl font-bold text-gray-300">DECATHLON</div>
+            <div class="font-display text-2xl font-bold text-gray-300">CANAL+</div>
+            <div class="font-display text-2xl font-bold text-gray-300">RED BULL</div>
+          </div>
+          <div class="flex gap-16 px-8 shrink-0 items-center">
+            <div class="font-display text-2xl font-bold text-gray-300">NIKE</div>
+            <div class="font-display text-2xl font-bold text-gray-300">ADIDAS</div>
+            <div class="font-display text-2xl font-bold text-gray-300">PUMA</div>
+            <div class="font-display text-2xl font-bold text-gray-300">DECATHLON</div>
+            <div class="font-display text-2xl font-bold text-gray-300">CANAL+</div>
+            <div class="font-display text-2xl font-bold text-gray-300">RED BULL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE L'ACADEMY -->
+<!-- ============================================================ -->
+<div id="page-academy" class="page">
+  <section class="relative h-[60vh] flex items-center">
+    <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Academy">
+    <div class="absolute inset-0 overlay-navy"></div>
+    <div class="relative max-w-7xl mx-auto px-6 text-white w-full">
+      <span class="text-orange font-bold uppercase tracking-widest text-sm">L'Academy</span>
+      <h1 class="font-display text-5xl md:text-7xl font-bold uppercase mt-4 mb-4">Notre identité</h1>
+      <p class="text-gray-200 max-w-2xl text-lg">Une académie d'excellence, des valeurs fortes, une vision claire : révéler les talents de demain.</p>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="text-orange font-bold uppercase tracking-widest text-sm">Notre histoire</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mt-4 mb-6">De la passion à l'excellence</h2>
+        <div class="w-20 h-1 bg-orange mb-8"></div>
+        <p class="text-gray-600 mb-4 leading-relaxed">Née en 2016 sur les plages de la côte, la Dream Team Beach Academy est le fruit de la vision de quelques passionnés convaincus que le football de plage méritait une vraie structure de formation.</p>
+        <p class="text-gray-600 mb-4 leading-relaxed">Dix ans plus tard, notre académie est devenue une référence régionale, avec plus de 250 joueurs formés et 18 titres remportés dans les différentes catégories.</p>
+        <p class="text-gray-600 leading-relaxed">Mais notre plus grande fierté reste humaine : voir grandir des jeunes joueurs, les accompagner dans leurs études et célébrer leurs succès, sur le sable comme dans la vie.</p>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?w=400&q=80" class="rounded-lg h-64 w-full object-cover" alt="Football">
+        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400&q=80" class="rounded-lg h-64 w-full object-cover mt-8" alt="Football">
+        <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=400&q=80" class="rounded-lg h-64 w-full object-cover -mt-8" alt="Football">
+        <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=400&q=80" class="rounded-lg h-64 w-full object-cover" alt="Football">
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-navy text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-orange font-bold uppercase tracking-widest text-sm">Nos valeurs</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mt-4 mb-6">Ce qui nous guide</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-8 hover-lift">
+          <div class="text-5xl mb-4">🏆</div>
+          <h3 class="font-display text-xl font-bold mb-3 text-orange">Excellence</h3>
+          <p class="text-gray-300 text-sm">Viser le plus haut niveau, dans le respect des étapes de progression de chaque joueur.</p>
+        </div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-8 hover-lift">
+          <div class="text-5xl mb-4">🤝</div>
+          <h3 class="font-display text-xl font-bold mb-3 text-orange">Respect</h3>
+          <p class="text-gray-300 text-sm">Respect de l'adversaire, de l'arbitre, des éducateurs, des coéquipiers et de soi-même.</p>
+        </div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-8 hover-lift">
+          <div class="text-5xl mb-4">💪</div>
+          <h3 class="font-display text-xl font-bold mb-3 text-orange">Dépassement</h3>
+          <p class="text-gray-300 text-sm">Apprendre à donner le meilleur de soi-même, repousser ses limites, progresser chaque jour.</p>
+        </div>
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-8 hover-lift">
+          <div class="text-5xl mb-4">📚</div>
+          <h3 class="font-display text-xl font-bold mb-3 text-orange">Éducation</h3>
+          <p class="text-gray-300 text-sm">Le sport au service de l'éducation. Le double projet sport-études est au cœur de notre mission.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-sand">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-orange font-bold uppercase tracking-widest text-sm">Notre équipe</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mt-4 mb-6">Le staff technique</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-lift">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" class="w-full h-72 object-cover" alt="Coach">
+          <div class="p-6 text-center">
+            <h3 class="font-bold text-lg text-navy">Jean Dupont</h3>
+            <p class="text-orange font-semibold text-sm uppercase tracking-wider mb-3">Directeur Technique</p>
+            <p class="text-gray-500 text-sm">Ancien joueur professionnel. Diplômé UEFA A. 15 ans d'expérience.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-lift">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80" class="w-full h-72 object-cover" alt="Coach">
+          <div class="p-6 text-center">
+            <h3 class="font-bold text-lg text-navy">Sophie Martin</h3>
+            <p class="text-orange font-semibold text-sm uppercase tracking-wider mb-3">Responsable Pré-formation</p>
+            <p class="text-gray-500 text-sm">Spécialiste du développement moteur de l'enfant.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-lift">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80" class="w-full h-72 object-cover" alt="Coach">
+          <div class="p-6 text-center">
+            <h3 class="font-bold text-lg text-navy">Karim Lamine</h3>
+            <p class="text-orange font-semibold text-sm uppercase tracking-wider mb-3">Entraîneur Gardiens</p>
+            <p class="text-gray-500 text-sm">Ancien gardien de sélection nationale de beach soccer.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover-lift">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80" class="w-full h-72 object-cover" alt="Coach">
+          <div class="p-6 text-center">
+            <h3 class="font-bold text-lg text-navy">Aïcha Benali</h3>
+            <p class="text-orange font-semibold text-sm uppercase tracking-wider mb-3">Préparatrice Physique</p>
+            <p class="text-gray-500 text-sm">Diplômée STAPS, spécialisée en préparation mentale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-orange font-bold uppercase tracking-widest text-sm">Nos infrastructures</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mt-4 mb-6">Installations</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="relative h-80 rounded-xl overflow-hidden group">
+          <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Terrain">
+          <div class="absolute inset-0 bg-gradient-to-t from-navy to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-6 text-white">
+            <h3 class="font-display text-2xl font-bold mb-2">Terrains de sable</h3>
+            <p class="text-sm text-gray-300">3 terrains homologués en bord de mer</p>
+          </div>
+        </div>
+        <div class="relative h-80 rounded-xl overflow-hidden group">
+          <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Entraînement">
+          <div class="absolute inset-0 bg-gradient-to-t from-navy to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-6 text-white">
+            <h3 class="font-display text-2xl font-bold mb-2">Centre d'entraînement</h3>
+            <p class="text-sm text-gray-300">Espaces dédiés à la préparation physique</p>
+          </div>
+        </div>
+        <div class="relative h-80 rounded-xl overflow-hidden group">
+          <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Formation">
+          <div class="absolute inset-0 bg-gradient-to-t from-navy to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-6 text-white">
+            <h3 class="font-display text-2xl font-bold mb-2">Centre de formation</h3>
+            <p class="text-sm text-gray-300">Espaces d'étude et salles de classe</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-navy text-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-orange font-bold uppercase tracking-widest text-sm">Nos réussites</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mt-4 mb-6">Palmarès</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="space-y-4">
+        <div class="flex items-center gap-6 bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6 hover:border-orange transition">
+          <div class="font-display text-3xl font-bold text-orange w-20 shrink-0">2025</div>
+          <div class="flex-1"><div class="font-bold text-lg">Champion Régional U15</div><div class="text-gray-400 text-sm">Finale remportée 4-2 face à l'Océan FC</div></div>
+        </div>
+        <div class="flex items-center gap-6 bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6 hover:border-orange transition">
+          <div class="font-display text-3xl font-bold text-orange w-20 shrink-0">2024</div>
+          <div class="flex-1"><div class="font-bold text-lg">Vainqueur Coupe Beach Soccer U17</div><div class="text-gray-400 text-sm">Parcours sans faute jusqu'en finale</div></div>
+        </div>
+        <div class="flex items-center gap-6 bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6 hover:border-orange transition">
+          <div class="font-display text-3xl font-bold text-orange w-20 shrink-0">2023</div>
+          <div class="flex-1"><div class="font-bold text-lg">Champion Départemental U13</div><div class="text-gray-400 text-sm">Invaincus sur toute la saison</div></div>
+        </div>
+        <div class="flex items-center gap-6 bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6 hover:border-orange transition">
+          <div class="font-display text-3xl font-bold text-orange w-20 shrink-0">2022</div>
+          <div class="flex-1"><div class="font-bold text-lg">Trophée Fair-Play National</div><div class="text-gray-400 text-sm">Récompense pour nos valeurs et notre éthique</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE FORMATIONS -->
+<!-- ============================================================ -->
+<div id="page-formations" class="page">
+  <section class="relative h-[60vh] flex items-center">
+    <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Formations">
+    <div class="absolute inset-0 overlay-navy"></div>
+    <div class="relative max-w-7xl mx-auto px-6 text-white w-full">
+      <span class="text-orange font-bold uppercase tracking-widest text-sm">Nos programmes</span>
+      <h1 class="font-display text-5xl md:text-7xl font-bold uppercase mt-4 mb-4">Formations</h1>
+      <p class="text-gray-200 max-w-2xl text-lg">De l'éveil au haut niveau, une progression pensée pour chaque âge.</p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="font-display text-3xl md:text-4xl font-bold uppercase mb-6">Une progression structurée</h2>
+      <div class="w-20 h-1 bg-orange mx-auto mb-8"></div>
+      <p class="text-gray-600 text-lg leading-relaxed">Notre projet de formation est construit autour de 3 grandes étapes : l'éveil, l'apprentissage et le perfectionnement. Chaque catégorie possède ses propres objectifs, ses contenus et son encadrement spécifique.</p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-sand">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <img src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=800&q=80" class="rounded-xl shadow-2xl h-[450px] w-full object-cover" alt="U6-U9">
+      <div>
+        <span class="text-orange font-bold uppercase tracking-widest text-sm">École de foot</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mt-3 mb-4">U6 — U9</h2>
+        <div class="w-16 h-1 bg-orange mb-6"></div>
+        <p class="text-gray-600 mb-6 leading-relaxed">L'éveil au football. À cet âge, l'objectif est de développer la motricité, la coordination et surtout le plaisir de jouer. Les séances sont ludiques, courtes et adaptées.</p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3"><span class="text-orange font-bold mt-1">✓</span><span>2 séances par semaine (1h)</span></li>
+          <li class="flex items-start gap-3"><span class="text-orange font-bold mt-1">✓</span><span>Jeux d'éveil et parcours motricité</span></li>
+          <li class="flex items-start gap-3"><span class="text-orange font-bold mt-1">✓</span><span>Premiers contacts avec le ballon</span></li>
+          <li class="flex items-start gap-3"><span class="text-orange font-bold mt-1">✓</span><span>1 éducateur pour 8 enfants maximum</span></li>
+        </ul>
+        <a onclick="showPage('inscriptions')" class="cursor-pointer inline-block bg-orange hover:bg-gold hover:text-navy text-white px-8 py-3 rounded-full font-bold uppercase text-sm tracking-wider transition">S'inscrire</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <span class="text-orange font-bold uppercase tracking-widest text-sm">Pré-formation</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mt-3 mb-4">U10 — U13</h2>
+        <div class="w-16 h-1 bg-orange mb-6"></div>
+        <p class="text-gray-600 mb-6 leading-relaxed">L'apprentissage technique et tactique. Les joueurs découvrent les principes collectifs, la notion de poste et développent leur intelligence de jeu.</p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3"><span class="text-orange font-bold mt-1">✓</span><span>3 séances par semaine (1h30)</span></li>
+          <li class="flex items-start gap-3"><span class="text-orange font-bold mt-1">✓</span><span>Travail technique individualisé</span></li>
+          <li class="flex items-start gap-3"><span class="text-orange font-bold mt-1">✓</span><span>Initiation tactique et collective</span></li>
+          <li class="flex items-start gap-3"><span class="text-orange font-bold mt-1">✓</span><span>1er niveau de compétition</span></li>
+        </ul>
+        <a onclick="showPage('inscriptions')" class="cursor-pointer inline-block bg-orange hover:bg-gold hover:text-navy text-white px-8 py-3 rounded-full font-bold uppercase text-sm tracking-wider transition">S'inscrire</a>
+      </div>
+      <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&q=80" class="rounded-xl shadow-2xl h-[450px] w-full object-cover order-1 lg:order-2" alt="U10-U13">
+    </div>
+  </section>
+
+  <section class="py-16 bg-sand">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=800&q=80" class="rounded-xl shadow-2xl h-[450px] w-full object-cover" alt="U15-U17">
+      <div>
+        <span class="text-orange font-bold uppercase tracking-widest text-sm">Formation</span>
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mt-3 mb-4">U15 — U17</h2>
+        <div class="w-16 h-1 bg-orange mb-6"></div>
+        <p class="text-gray-600 mb-6 leading-relaxed">Le perfectionnement et la préparation au haut niveau. Objectif : amener chaque joueur vers son plein potentiel, techniquement, tactiquement, physiquement et mentalement.</p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-start gap-3"><span class="text-orange font-bold mt-1">✓</span><span>4 séances par semaine (2h)</span></li>
+          <li class="flex items-start gap-3"><span class="text-orange font-bold mt-1">✓</span><span>Préparation physique spécifique</span></li>
+          <li class="flex items-start gap-3"><span class="text-orange font-bold mt-1">✓</span><span>Analyse vidéo et suivi individuel</span></li>
+          <li class="flex items-start gap-3"><span class="text-orange font-bold mt-1">✓</span><span>Compétition régionale et nationale</span></li>
+        </ul>
+        <a onclick="showPage('inscriptions')" class="cursor-pointer inline-block bg-orange hover:bg-gold hover:text-navy text-white px-8 py-3 rounded-full font-bold uppercase text-sm tracking-wider transition">S'inscrire</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6">Autres programmes</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-sand rounded-xl overflow-hidden shadow-lg hover-lift">
+          <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600&q=80" class="w-full h-56 object-cover" alt="Gardiens">
+          <div class="p-6">
+            <h3 class="font-display text-2xl font-bold mb-3">Entraînement Gardiens</h3>
+            <p class="text-gray-600 text-sm mb-4">Séances spécifiques dédiées aux techniques du gardien de but. Réflexes, plongeons, jeu au pied, sorties aériennes.</p>
+            <span class="text-orange font-bold text-sm uppercase tracking-wider">Tous les mercredis</span>
+          </div>
+        </div>
+        <div class="bg-sand rounded-xl overflow-hidden shadow-lg hover-lift">
+          <img src="https://images.unsplash.com/photo-1552667466-07770ae110d0?w=600&q=80" class="w-full h-56 object-cover" alt="Stages">
+          <div class="p-6">
+            <h3 class="font-display text-2xl font-bold mb-3">Stages & Camps</h3>
+            <p class="text-gray-600 text-sm mb-4">Stages intensifs pendant les vacances scolaires. Football, activités nautiques, vie en collectivité.</p>
+            <span class="text-orange font-bold text-sm uppercase tracking-wider">Vacances scolaires</span>
+          </div>
+        </div>
+        <div class="bg-sand rounded-xl overflow-hidden shadow-lg hover-lift">
+          <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80" class="w-full h-56 object-cover" alt="Détection">
+          <div class="p-6">
+            <h3 class="font-display text-2xl font-bold mb-3">Détection & Recrutement</h3>
+            <p class="text-gray-600 text-sm mb-4">Journées de détection ouvertes aux joueurs extérieurs souhaitant rejoindre notre centre de formation.</p>
+            <span class="text-orange font-bold text-sm uppercase tracking-wider">Sur inscription</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-24 overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover" alt="bg">
+    <div class="absolute inset-0 overlay-orange"></div>
+    <div class="relative max-w-4xl mx-auto px-6 text-center text-white">
+      <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6">Trouvez la formation idéale</h2>
+      <p class="text-lg mb-8">Notre équipe est à votre disposition pour vous orienter vers la catégorie adaptée.</p>
+      <a onclick="showPage('inscriptions')" class="cursor-pointer inline-block bg-white text-navy hover:bg-navy hover:text-white px-10 py-4 rounded-full font-bold uppercase text-sm tracking-wider transition">Voir les inscriptions</a>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE INSCRIPTIONS -->
+<!-- ============================================================ -->
+<div id="page-inscriptions" class="page">
+  <section class="relative h-[60vh] flex items-center">
+    <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Inscriptions">
+    <div class="absolute inset-0 overlay-navy"></div>
+    <div class="relative max-w-7xl mx-auto px-6 text-white w-full">
+      <span class="text-orange font-bold uppercase tracking-widest text-sm">Saison 2026</span>
+      <h1 class="font-display text-5xl md:text-7xl font-bold uppercase mt-4 mb-4">Inscriptions & Tarifs</h1>
+      <p class="text-gray-200 max-w-2xl text-lg">Rejoignez la Dream Team. Processus simple, formules claires.</p>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6">Comment s'inscrire ?</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-orange text-white rounded-full flex items-center justify-center font-display text-3xl font-bold mx-auto mb-6">1</div>
+          <h3 class="font-bold text-lg mb-3">Choisir sa formule</h3>
+          <p class="text-gray-600 text-sm">Consultez nos formules et sélectionnez celle qui correspond à votre profil.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-20 h-20 bg-orange text-white rounded-full flex items-center justify-center font-display text-3xl font-bold mx-auto mb-6">2</div>
+          <h3 class="font-bold text-lg mb-3">Remplir le dossier</h3>
+          <p class="text-gray-600 text-sm">Complétez le formulaire en ligne et joignez les pièces demandées.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-20 h-20 bg-orange text-white rounded-full flex items-center justify-center font-display text-3xl font-bold mx-auto mb-6">3</div>
+          <h3 class="font-bold text-lg mb-3">Session d'essai</h3>
+          <p class="text-gray-600 text-sm">Venez tester une séance gratuite dans la catégorie concernée.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-20 h-20 bg-orange text-white rounded-full flex items-center justify-center font-display text-3xl font-bold mx-auto mb-6">4</div>
+          <h3 class="font-bold text-lg mb-3">Validation</h3>
+          <p class="text-gray-600 text-sm">Après validation, votre place est confirmée pour la saison.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-sand">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6">Nos formules</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift">
+          <h3 class="font-display text-2xl font-bold text-navy mb-2">Essentiel</h3>
+          <p class="text-gray-500 text-sm mb-6">Pour découvrir et progresser</p>
+          <div class="font-display text-5xl font-bold text-orange mb-6">250<span class="text-lg">€/an</span></div>
+          <ul class="space-y-3 mb-8 text-sm">
+            <li class="flex gap-2"><span class="text-orange">✓</span>2 entraînements / semaine</li>
+            <li class="flex gap-2"><span class="text-orange">✓</span>Accès aux matchs amicaux</li>
+            <li class="flex gap-2"><span class="text-orange">✓</span>Tenue d'entraînement incluse</li>
+            <li class="flex gap-2"><span class="text-orange">✓</span>Suivi pédagogique de base</li>
+          </ul>
+          <a class="cursor-pointer block bg-navy text-white text-center py-3 rounded-full font-bold hover:bg-ocean transition">Choisir</a>
+        </div>
+        <div class="bg-navy text-white rounded-2xl p-8 shadow-2xl hover-lift relative transform md:-translate-y-4">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Recommandé</div>
+          <h3 class="font-display text-2xl font-bold mb-2">Premium</h3>
+          <p class="text-gray-300 text-sm mb-6">La formule complète</p>
+          <div class="font-display text-5xl font-bold text-orange mb-6">400<span class="text-lg">€/an</span></div>
+          <ul class="space-y-3 mb-8 text-sm">
+            <li class="flex gap-2"><span class="text-orange">✓</span>3 entraînements / semaine</li>
+            <li class="flex gap-2"><span class="text-orange">✓</span>Accès aux tournois officiels</li>
+            <li class="flex gap-2"><span class="text-orange">✓</span>Tenue complète + survêtement</li>
+            <li class="flex gap-2"><span class="text-orange">✓</span>Suivi personnalisé</li>
+            <li class="flex gap-2"><span class="text-orange">✓</span>Analyse vidéo mensuelle</li>
+          </ul>
+          <a class="cursor-pointer block bg-orange text-white text-center py-3 rounded-full font-bold hover:bg-gold hover:text-navy transition">Choisir</a>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift">
+          <h3 class="font-display text-2xl font-bold text-navy mb-2">Elite</h3>
+          <p class="text-gray-500 text-sm mb-6">Pour viser le haut niveau</p>
+          <div class="font-display text-5xl font-bold text-orange mb-6">600<span class="text-lg">€/an</span></div>
+          <ul class="space-y-3 mb-8 text-sm">
+            <li class="flex gap-2"><span class="text-orange">✓</span>4 entraînements / semaine</li>
+            <li class="flex gap-2"><span class="text-orange">✓</span>Préparation physique spécifique</li>
+            <li class="flex gap-2"><span class="text-orange">✓</span>Tenue complète + équipement</li>
+            <li class="flex gap-2"><span class="text-orange">✓</span>Suivi vidéo et analyse</li>
+            <li class="flex gap-2"><span class="text-orange">✓</span>Préparation mentale</li>
+          </ul>
+          <a class="cursor-pointer block bg-navy text-white text-center py-3 rounded-full font-bold hover:bg-ocean transition">Choisir</a>
+        </div>
+      </div>
+      <div class="text-center mt-10 text-sm text-gray-500">
+        💡 Une aide sociale est disponible pour les familles éligibles. <a href="#" class="text-orange underline font-semibold">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6">Questions fréquentes</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="space-y-4">
+        <details class="bg-sand rounded-xl p-6 cursor-pointer group">
+          <summary class="font-bold text-lg flex justify-between items-center">Quel est l'âge minimum pour s'inscrire ?<span class="text-orange text-2xl group-open:rotate-45 transition">+</span></summary>
+          <p class="text-gray-600 mt-4">Nous accueillons les enfants à partir de 5 ans (catégorie U6) jusqu'à 17 ans (U17).</p>
+        </details>
+        <details class="bg-sand rounded-xl p-6 cursor-pointer group">
+          <summary class="font-bold text-lg flex justify-between items-center">Faut-il avoir un niveau particulier ?<span class="text-orange text-2xl group-open:rotate-45 transition">+</span></summary>
+          <p class="text-gray-600 mt-4">Non. Nous accueillons tous les niveaux. Une session d'essai permet de déterminer la catégorie adaptée.</p>
+        </details>
+        <details class="bg-sand rounded-xl p-6 cursor-pointer group">
+          <summary class="font-bold text-lg flex justify-between items-center">Quels documents fournir ?<span class="text-orange text-2xl group-open:rotate-45 transition">+</span></summary>
+          <p class="text-gray-600 mt-4">Certificat médical, autorisation parentale, photo d'identité, justificatif de domicile et fiche sanitaire.</p>
+        </details>
+        <details class="bg-sand rounded-xl p-6 cursor-pointer group">
+          <summary class="font-bold text-lg flex justify-between items-center">Peut-on payer en plusieurs fois ?<span class="text-orange text-2xl group-open:rotate-45 transition">+</span></summary>
+          <p class="text-gray-600 mt-4">Oui, le paiement peut être échelonné jusqu'à 10 fois sans frais supplémentaires.</p>
+        </details>
+        <details class="bg-sand rounded-xl p-6 cursor-pointer group">
+          <summary class="font-bold text-lg flex justify-between items-center">Y a-t-il un suivi scolaire ?<span class="text-orange text-2xl group-open:rotate-45 transition">+</span></summary>
+          <p class="text-gray-600 mt-4">Oui, un accompagnement scolaire personnalisé est proposé dans le cadre du double projet sport-études.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-navy text-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6">Pré-inscription en ligne</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <form class="space-y-5 bg-white/5 backdrop-blur border border-white/10 p-8 rounded-2xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <input type="text" placeholder="Nom" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-orange">
+          <input type="text" placeholder="Prénom" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-orange">
+        </div>
+        <input type="email" placeholder="Email" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-orange">
+        <input type="tel" placeholder="Téléphone" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-orange">
+        <select class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-orange">
+          <option class="text-navy">Catégorie souhaitée</option>
+          <option class="text-navy">U6 - U9</option>
+          <option class="text-navy">U10 - U13</option>
+          <option class="text-navy">U15 - U17</option>
+          <option class="text-navy">Entraînement Gardiens</option>
+        </select>
+        <textarea rows="4" placeholder="Message ou informations complémentaires" class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-orange"></textarea>
+        <button type="button" class="w-full bg-orange hover:bg-gold hover:text-navy text-white py-4 rounded-full font-bold uppercase tracking-wider transition">Envoyer ma demande</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE VIE SPORTIVE -->
+<!-- ============================================================ -->
+<div id="page-vie" class="page">
+  <section class="relative h-[60vh] flex items-center">
+    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Vie sportive">
+    <div class="absolute inset-0 overlay-navy"></div>
+    <div class="relative max-w-7xl mx-auto px-6 text-white w-full">
+      <span class="text-orange font-bold uppercase tracking-widest text-sm">Sur le terrain</span>
+      <h1 class="font-display text-5xl md:text-7xl font-bold uppercase mt-4 mb-4">Vie Sportive</h1>
+      <p class="text-gray-200 max-w-2xl text-lg">Plannings, matchs, résultats, tournois : toute la vie de l'academy au quotidien.</p>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6">Planning des entraînements</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="bg-sand rounded-xl p-6 border-t-4 border-orange">
+          <div class="font-display text-2xl font-bold text-navy mb-4">Lundi</div>
+          <div class="text-sm text-gray-600 mb-2"><strong>17h00 - 18h30</strong></div>
+          <div class="text-sm text-orange font-bold mb-1">U10 - U13</div>
+          <div class="text-xs text-gray-500">Terrain 1 & 2</div>
+        </div>
+        <div class="bg-sand rounded-xl p-6 border-t-4 border-orange">
+          <div class="font-display text-2xl font-bold text-navy mb-4">Mercredi</div>
+          <div class="text-sm text-gray-600 mb-2"><strong>14h00 - 16h00</strong></div>
+          <div class="text-sm text-orange font-bold mb-1">U15 - U17</div>
+          <div class="text-xs text-gray-500">Terrain principal</div>
+        </div>
+        <div class="bg-sand rounded-xl p-6 border-t-4 border-orange">
+          <div class="font-display text-2xl font-bold text-navy mb-4">Vendredi</div>
+          <div class="text-sm text-gray-600 mb-2"><strong>17h30 - 19h00</strong></div>
+          <div class="text-sm text-orange font-bold mb-1">U6 - U9</div>
+          <div class="text-xs text-gray-500">Terrain 3</div>
+        </div>
+        <div class="bg-sand rounded-xl p-6 border-t-4 border-orange">
+          <div class="font-display text-2xl font-bold text-navy mb-4">Samedi</div>
+          <div class="text-sm text-gray-600 mb-2"><strong>10h00 - 12h00</strong></div>
+          <div class="text-sm text-orange font-bold mb-1">Toutes catégories</div>
+          <div class="text-xs text-gray-500">Terrain principal</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-sand">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6">Derniers résultats</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="space-y-4">
+        <div class="bg-white rounded-xl p-6 shadow-md flex items-center justify-between flex-wrap gap-4">
+          <div class="text-sm text-gray-500 w-24">12 Oct 2026</div>
+          <div class="flex-1 text-center font-bold text-navy">Dream Team U15</div>
+          <div class="font-display text-3xl font-bold text-orange px-4">3 - 1</div>
+          <div class="flex-1 text-center font-bold text-navy">FC Sable</div>
+          <div class="text-xs bg-ocean text-white px-3 py-1 rounded-full uppercase">Amical</div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md flex items-center justify-between flex-wrap gap-4">
+          <div class="text-sm text-gray-500 w-24">05 Oct 2026</div>
+          <div class="flex-1 text-center font-bold text-navy">Dream Team U13</div>
+          <div class="font-display text-3xl font-bold text-orange px-4">2 - 2</div>
+          <div class="flex-1 text-center font-bold text-navy">Océan FC</div>
+          <div class="text-xs bg-orange text-white px-3 py-1 rounded-full uppercase">Championnat</div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md flex items-center justify-between flex-wrap gap-4">
+          <div class="text-sm text-gray-500 w-24">28 Sep 2026</div>
+          <div class="flex-1 text-center font-bold text-navy">Dream Team U17</div>
+          <div class="font-display text-3xl font-bold text-orange px-4">5 - 0</div>
+          <div class="flex-1 text-center font-bold text-navy">AS Plage</div>
+          <div class="text-xs bg-orange text-white px-3 py-1 rounded-full uppercase">Coupe</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6">Tournois à venir</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="rounded-xl overflow-hidden shadow-lg hover-lift bg-sand">
+          <img src="https://images.unsplash.com/photo-1552667466-07770ae110d0?w=600&q=80" class="w-full h-56 object-cover" alt="Tournoi">
+          <div class="p-6">
+            <div class="text-orange font-bold text-sm uppercase mb-2">15 Nov 2026</div>
+            <h3 class="font-display text-xl font-bold mb-2">Tournoi d'automne</h3>
+            <p class="text-gray-600 text-sm">Compétition amicale U10 - U13. 8 équipes engagées.</p>
+          </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg hover-lift bg-sand">
+          <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80" class="w-full h-56 object-cover" alt="Tournoi">
+          <div class="p-6">
+            <div class="text-orange font-bold text-sm uppercase mb-2">20 Déc 2026</div>
+            <h3 class="font-display text-xl font-bold mb-2">Coupe de Noël</h3>
+            <p class="text-gray-600 text-sm">Tournoi toutes catégories, ambiance festive garantie.</p>
+          </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg hover-lift bg-sand">
+          <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?w=600&q=80" class="w-full h-56 object-cover" alt="Tournoi">
+          <div class="p-6">
+            <div class="text-orange font-bold text-sm uppercase mb-2">10 Juin 2027</div>
+            <h3 class="font-display text-xl font-bold mb-2">Tournoi de fin d'année</h3>
+            <p class="text-gray-600 text-sm">Le grand rendez-vous annuel de l'academy. Toutes catégories.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE ACTUALITÉS -->
+<!-- ============================================================ -->
+<div id="page-actualites" class="page">
+  <section class="relative h-[60vh] flex items-center">
+    <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Actualités">
+    <div class="absolute inset-0 overlay-navy"></div>
+    <div class="relative max-w-7xl mx-auto px-6 text-white w-full">
+      <span class="text-orange font-bold uppercase tracking-widest text-sm">Le média de l'academy</span>
+      <h1 class="font-display text-5xl md:text-7xl font-bold uppercase mt-4 mb-4">Actualités & Médias</h1>
+      <p class="text-gray-200 max-w-2xl text-lg">Toute l'actualité sportive, les interviews et les coulisses de l'academy.</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white border-b">
+    <div class="max-w-7xl mx-auto px-6 flex flex-wrap gap-3 justify-center">
+      <button class="bg-orange text-white px-6 py-2 rounded-full font-bold uppercase text-xs tracking-wider">Tout</button>
+      <button class="bg-sand text-navy hover:bg-navy hover:text-white transition px-6 py-2 rounded-full font-bold uppercase text-xs tracking-wider">Résultats</button>
+      <button class="bg-sand text-navy hover:bg-navy hover:text-white transition px-6 py-2 rounded-full font-bold uppercase text-xs tracking-wider">Interviews</button>
+      <button class="bg-sand text-navy hover:bg-navy hover:text-white transition px-6 py-2 rounded-full font-bold uppercase text-xs tracking-wider">Événements</button>
+      <button class="bg-sand text-navy hover:bg-navy hover:text-white transition px-6 py-2 rounded-full font-bold uppercase text-xs tracking-wider">Vidéos</button>
+    </div>
+  </section>
+
+  <section class="py-20 bg-sand">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <article class="bg-white rounded-xl overflow-hidden shadow-md hover-lift cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80" class="w-full h-56 object-cover" alt="news">
+          <div class="p-6">
+            <span class="text-xs font-bold text-orange uppercase tracking-widest">Résultats</span>
+            <h3 class="font-bold text-lg mt-2 mb-2">Victoire 3-1 en amical face au FC Sable</h3>
+            <p class="text-gray-500 text-sm mb-4">Nos U15 poursuivent leur préparation avec sérieux avant le début du championnat...</p>
+            <span class="text-xs text-gray-400">12 Octobre 2026</span>
+          </div>
+        </article>
+        <article class="bg-white rounded-xl overflow-hidden shadow-md hover-lift cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&q=80" class="w-full h-56 object-cover" alt="news">
+          <div class="p-6">
+            <span class="text-xs font-bold text-orange uppercase tracking-widest">Interview</span>
+            <h3 class="font-bold text-lg mt-2 mb-2">Le coach principal dévoile sa vision</h3>
+            <p class="text-gray-500 text-sm mb-4">Objectifs, méthode, philosophie de jeu : entretien exclusif avec notre directeur technique...</p>
+            <span class="text-xs text-gray-400">08 Octobre 2026</span>
+          </div>
+        </article>
+        <article class="bg-white rounded-xl overflow-hidden shadow-md hover-lift cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1552667466-07770ae110d0?w=600&q=80" class="w-full h-56 object-cover" alt="news">
+          <div class="p-6">
+            <span class="text-xs font-bold text-orange uppercase tracking-widest">Événement</span>
+            <h3 class="font-bold text-lg mt-2 mb-2">Tournoi de fin d'année : inscriptions ouvertes</h3>
+            <p class="text-gray-500 text-sm mb-4">Le grand rendez-vous de la saison approche. Réservez votre place dès maintenant...</p>
+            <span class="text-xs text-gray-400">01 Octobre 2026</span>
+          </div>
+        </article>
+        <article class="bg-white rounded-xl overflow-hidden shadow-md hover-lift cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?w=600&q=80" class="w-full h-56 object-cover" alt="news">
+          <div class="p-6">
+            <span class="text-xs font-bold text-orange uppercase tracking-widest">Academy</span>
+            <h3 class="font-bold text-lg mt-2 mb-2">Nouveau partenariat avec une marque nationale</h3>
+            <p class="text-gray-500 text-sm mb-4">L'academy officialise un partenariat majeur pour les 3 prochaines saisons...</p>
+            <span class="text-xs text-gray-400">25 Septembre 2026</span>
+          </div>
+        </article>
+        <article class="bg-white rounded-xl overflow-hidden shadow-md hover-lift cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=600&q=80" class="w-full h-56 object-cover" alt="news">
+          <div class="p-6">
+            <span class="text-xs font-bold text-orange uppercase tracking-widest">Vidéos</span>
+            <h3 class="font-bold text-lg mt-2 mb-2">Highlights : les plus beaux buts de septembre</h3>
+            <p class="text-gray-500 text-sm mb-4">Revivez les moments forts et les plus belles réalisations de nos joueurs...</p>
+            <span class="text-xs text-gray-400">20 Septembre 2026</span>
+          </div>
+        </article>
+        <article class="bg-white rounded-xl overflow-hidden shadow-md hover-lift cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600&q=80" class="w-full h-56 object-cover" alt="news">
+          <div class="p-6">
+            <span class="text-xs font-bold text-orange uppercase tracking-widest">Formation</span>
+            <h3 class="font-bold text-lg mt-2 mb-2">3 joueurs sélectionnés en équipe régionale</h3>
+            <p class="text-gray-500 text-sm mb-4">Fierté pour l'academy : trois de nos U17 intègrent la sélection régionale...</p>
+            <span class="text-xs text-gray-400">15 Septembre 2026</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-navy text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6">Vidéos à la une</h2>
+        <div class="w-20 h-1 bg-orange mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="relative rounded-xl overflow-hidden group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&q=80" class="w-full h-72 object-cover group-hover:scale-110 transition duration-700" alt="video">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-16 h-16 bg-orange rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition">▶</div>
+          </div>
+          <div class="absolute bottom-0 left-0 p-6"><h3 class="font-bold text-lg">Behind the scenes : une journée à l'academy</h3></div>
+        </div>
+        <div class="relative rounded-xl overflow-hidden group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600&q=80" class="w-full h-72 object-cover group-hover:scale-110 transition duration-700" alt="video">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-16 h-16 bg-orange rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition">▶</div>
+          </div>
+          <div class="absolute bottom-0 left-0 p-6"><h3 class="font-bold text-lg">Highlights : Dream Team vs FC Sable</h3></div>
+        </div>
+        <div class="relative rounded-xl overflow-hidden group cursor-pointer">
+          <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&q=80" class="w-full h-72 object-cover group-hover:scale-110 transition duration-700" alt="video">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-16 h-16 bg-orange rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition">▶</div>
+          </div>
+          <div class="absolute bottom-0 left-0 p-6"><h3 class="font-bold text-lg">Interview exclusive du coach principal</h3></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE CONTACT -->
+<!-- ============================================================ -->
+<div id="page-contact" class="page">
+  <section class="relative h-[60vh] flex items-center">
+    <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Contact">
+    <div class="absolute inset-0 overlay-navy"></div>
+    <div class="relative max-w-7xl mx-auto px-6 text-white w-full">
+      <span class="text-orange font-bold uppercase tracking-widest text-sm">Parlons-en</span>
+      <h1 class="font-display text-5xl md:text-7xl font-bold uppercase mt-4 mb-4">Contact</h1>
+      <p class="text-gray-200 max-w-2xl text-lg">Une question ? Une demande ? Nous vous répondons dans les 24h.</p>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div>
+        <h2 class="font-display text-3xl font-bold uppercase mb-8">Nos coordonnées</h2>
+        <div class="space-y-6 mb-10">
+          <div class="flex gap-4">
+            <div class="w-12 h-12 bg-orange/10 text-orange rounded-full flex items-center justify-center text-xl shrink-0">📍</div>
+            <div><div class="font-bold">Adresse</div><div class="text-gray-600">123 Promenade de la Plage, 75000 Paris</div></div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-12 h-12 bg-orange/10 text-orange rounded-full flex items-center justify-center text-xl shrink-0">📞</div>
+            <div><div class="font-bold">Téléphone</div><div class="text-gray-600">+33 1 23 45 67 89</div></div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-12 h-12 bg-orange/10 text-orange rounded-full flex items-center justify-center text-xl shrink-0">✉️</div>
+            <div><div class="font-bold">Email</div><div class="text-gray-600">contact@dreamteambeach.com</div></div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-12 h-12 bg-orange/10 text-orange rounded-full flex items-center justify-center text-xl shrink-0">🕒</div>
+            <div><div class="font-bold">Horaires</div><div class="text-gray-600">Lun-Ven : 9h - 19h / Sam : 9h - 13h</div></div>
+          </div>
+        </div>
+        <h3 class="font-display text-2xl font-bold uppercase mb-4">Réseaux sociaux</h3>
+        <div class="flex gap-4">
+          <a href="#" class="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center hover:bg-orange transition font-bold">f</a>
+          <a href="#" class="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center hover:bg-orange transition font-bold">in</a>
+          <a href="#" class="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center hover:bg-orange transition font-bold">ig</a>
+          <a href="#" class="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center hover:bg-orange transition font-bold">yt</a>
+        </div>
+      </div>
+      <div>
+        <h2 class="font-display text-3xl font-bold uppercase mb-8">Envoyez-nous un message</h2>
+        <form class="space-y-5">
+          <div class="grid grid-cols-2 gap-5">
+            <input type="text" placeholder="Nom" class="w-full bg-sand border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-orange">
+            <input type="text" placeholder="Prénom" class="w-full bg-sand border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-orange">
+          </div>
+          <input type="email" placeholder="Email" class="w-full bg-sand border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-orange">
+          <input type="tel" placeholder="Téléphone" class="w-full bg-sand border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-orange">
+          <input type="text" placeholder="Sujet" class="w-full bg-sand border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-orange">
+          <textarea rows="5" placeholder="Votre message..." class="w-full bg-sand border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-orange"></textarea>
+          <button type="button" class="bg-orange hover:bg-gold hover:text-navy text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider transition w-full">Envoyer le message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-96 bg-navy relative">
+    <img src="https://images.unsplash.com/photo-1459865264687-595d652de67e?w=1920&q=80" class="w-full h-full object-cover opacity-60" alt="Map">
+    <div class="absolute inset-0 flex items-center justify-center">
+      <div class="bg-white p-6 rounded-xl shadow-2xl text-center">
+        <div class="text-4xl mb-2">📍</div>
+        <div class="font-bold text-navy">Dream Team Beach Academy</div>
+        <div class="text-sm text-gray-500">123 Promenade de la Plage, 75000 Paris</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================ -->
+<!-- PAGE ESPACE MEMBRE -->
+<!-- ============================================================ -->
+<div id="page-membre" class="page">
+  <section class="min-h-[85vh] flex items-center relative py-20">
+    <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?w=1920&q=80" class="absolute inset-0 w-full h-full object-cover" alt="bg">
+    <div class="absolute inset-0 overlay-navy"></div>
+    <div class="relative max-w-md mx-auto w-full px-6">
+      <div class="bg-white rounded-2xl shadow-2xl p-10 border-t-4 border-orange">
+        <div class="text-center mb-8">
+          <img src="logo.png" alt="Dream Team Beach Academy" class="h-24 w-auto mx-auto mb-4 logo-img">
+          <h1 class="font-display text-3xl font-bold uppercase text-navy">Espace Membre</h1>
+          <p class="text-gray-500 text-sm mt-2">Connectez-vous à votre espace personnel</p>
+        </div>
+        <form class="space-y-5">
+          <div>
+            <label class="block text-sm font-bold text-navy mb-2 uppercase tracking-wider">Identifiant</label>
+            <input type="text" class="w-full bg-sand border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-orange" placeholder="Votre identifiant">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-navy mb-2 uppercase tracking-wider">Mot de passe</label>
+            <input type="password" class="w-full bg-sand border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:border-orange" placeholder="••••••••">
+          </div>
+          <div class="flex items-center justify-between text-sm">
+            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="rounded"><span class="text-gray-600">Se souvenir de moi</span></label>
+            <a href="#" class="text-orange font-semibold hover:underline">Oublié ?</a>
+          </div>
+          <button type="button" class="w-full bg-navy hover:bg-ocean text-white py-4 rounded-full font-bold uppercase tracking-wider transition">Se connecter</button>
+        </form>
+        <div class="text-center mt-6 text-sm text-gray-500">
+          Pas encore de compte ? <a onclick="showPage('inscriptions')" class="cursor-pointer text-orange font-semibold hover:underline">S'inscrire</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer class="bg-navy text-white pt-20 pb-8 border-t-4 border-orange">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <div>
+        <img src="logo.png" alt="Dream Team Beach Academy" class="h-24 w-auto mb-6 logo-img">
+        <p class="text-gray-400 text-sm mb-6">L'excellence du football de plage depuis 2016. Formation, discipline, passion.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-orange transition text-sm">f</a>
+          <a href="#" class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-orange transition text-sm">in</a>
+          <a href="#" class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-orange transition text-sm">ig</a>
+          <a href="#" class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-orange transition text-sm">yt</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-display text-lg font-bold mb-6 text-orange uppercase">Navigation</h4>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li><a onclick="showPage('accueil')" class="cursor-pointer hover:text-orange transition">Accueil</a></li>
+          <li><a onclick="showPage('academy')" class="cursor-pointer hover:text-orange transition">L'Academy</a></li>
+          <li><a onclick="showPage('formations')" class="cursor-pointer hover:text-orange transition">Formations</a></li>
+          <li><a onclick="showPage('inscriptions')" class="cursor-pointer hover:text-orange transition">Inscriptions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display text-lg font-bold mb-6 text-orange uppercase">Informations</h4>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li><a onclick="showPage('vie')" class="cursor-pointer hover:text-orange transition">Vie Sportive</a></li>
+          <li><a onclick="showPage('actualites')" class="cursor-pointer hover:text-orange transition">Actualités</a></li>
+          <li><a onclick="showPage('contact')" class="cursor-pointer hover:text-orange transition">Contact</a></li>
+          <li><a onclick="showPage('membre')" class="cursor-pointer hover:text-orange transition">Espace Membre</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display text-lg font-bold mb-6 text-orange uppercase">Newsletter</h4>
+        <p class="text-gray-400 text-sm mb-4">Recevez les dernières actualités de l'academy.</p>
+        <form class="flex">
+          <input type="email" placeholder="Votre email" class="w-full bg-white/10 border border-white/20 rounded-l-lg px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-orange">
+          <button type="button" class="bg-orange hover:bg-gold hover:text-navy px-4 py-3 rounded-r-lg font-bold transition">→</button>
+        </form>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between text-xs text-gray-500 gap-3">
+      <p>© 2026 Dream Team Beach Academy. Maquette de présentation.</p>
+      <p>Mentions légales • Politique de confidentialité • CGV</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- SCRIPTS -->
+<!-- ============================================================ -->
+<script>
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + pageId);
+  if (target) target.classList.add('active');
+  
+  document.querySelectorAll('[data-page]').forEach(link => {
+    link.classList.remove('active');
+    if (link.dataset.page === pageId) link.classList.add('active');
+  });
+  
+  document.getElementById('mobile-menu').classList.add('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMobile() {
+  document.getElementById('mobile-menu').classList.toggle('hidden');
+}
+
+// HERO CAROUSEL
+let heroIndex = 0;
+const heroTotal = 3;
+function heroUpdate() {
+  document.getElementById('hero-carousel').style.transform = `translateX(-${heroIndex * 100}%)`;
+  document.querySelectorAll('.hero-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === heroIndex);
+    d.style.width = i === heroIndex ? '24px' : '8px';
+    d.style.background = i === heroIndex ? '#F26522' : 'rgba(255,255,255,0.5)';
+  });
+}
+function heroNext() { heroIndex = (heroIndex + 1) % heroTotal; heroUpdate(); }
+function heroPrev() { heroIndex = (heroIndex - 1 + heroTotal) % heroTotal; heroUpdate(); }
+function heroGo(i) { heroIndex = i; heroUpdate(); }
+setInterval(heroNext, 6000);
+
+// TESTIMONIALS CAROUSEL
+let testiIndex = 0;
+const testiTotal = 3;
+function testiUpdate() {
+  document.getElementById('testi-carousel').style.transform = `translateX(-${testiIndex * 100}%)`;
+  document.querySelectorAll('.testi-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === testiIndex);
+    d.style.width = i === testiIndex ? '24px' : '8px';
+    d.style.background = i === testiIndex ? '#F26522' : '#d1d5db';
+  });
+}
+function testiGo(i) { testiIndex = i; testiUpdate(); }
+setInterval(() => { testiIndex = (testiIndex + 1) % testiTotal; testiUpdate(); }, 7000);
+
+// INIT
+document.addEventListener('DOMContentLoaded', () => {
+  showPage('accueil');
+  heroUpdate();
+  testiUpdate();
+});
+</script>
+
+</body>
+</html>
