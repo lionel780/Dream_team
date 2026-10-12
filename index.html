@@ -429,7 +429,7 @@ tailwind.config = {
           <div class="h-56 overflow-hidden"><img src="casting.png" class="w-full h-full object-cover" alt="Football"></div>
           <div class="p-6">
             <span class="text-xs font-bold text-orange uppercase tracking-widest">Interview</span>
-            <h3 class="font-bold text-lg mt-2 mb-2">Le coach principal dévoile sa vision</h3>
+            <h3 class="font-bold text-lg mt-2 mb-2">Casting de recrutement</h3>
             <p class="text-gray-500 text-sm">Objectifs, méthode, philosophie de jeu : entretien exclusif avec notre directeur technique...</p>
           </div>
         </article>
@@ -437,8 +437,8 @@ tailwind.config = {
           <div class="h-56 overflow-hidden"><img src="banniere.png" class="w-full h-full object-cover" alt="Équipe football"></div>
           <div class="p-6">
             <span class="text-xs font-bold text-orange uppercase tracking-widest">Événement</span>
-            <h3 class="font-bold text-lg mt-2 mb-2">Tournoi de fin d'année : inscriptions ouvertes</h3>
-            <p class="text-gray-500 text-sm">Le grand rendez-vous de la saison approche. Réservez votre place dès maintenant...</p>
+            <h3 class="font-bold text-lg mt-2 mb-2">Sortie académique au stade avec nos jeunes champions</h3>
+            <p class="text-gray-500 text-sm">Dans le cadre de l’encadrement de notre équipe de football pour enfants, nous organisons une sortie académique au stade.</p>
           </div>
         </article>
       </div>
@@ -1432,24 +1432,9 @@ function toggleMobile() {
   document.getElementById('mobile-menu').classList.toggle('hidden');
 }
 
-// TESTIMONIALS CAROUSEL
-let testiIndex = 0;
-const testiTotal = 3;
-function testiUpdate() {
-  document.getElementById('testi-carousel').style.transform = `translateX(-${testiIndex * 100}%)`;
-  document.querySelectorAll('.testi-dot').forEach((d, i) => {
-    d.classList.toggle('active', i === testiIndex);
-    d.style.width = i === testiIndex ? '24px' : '8px';
-    d.style.background = i === testiIndex ? '#F26522' : '#d1d5db';
-  });
-}
-function testiGo(i) { testiIndex = i; testiUpdate(); }
-setInterval(() => { testiIndex = (testiIndex + 1) % testiTotal; testiUpdate(); }, 7000);
-
 // INIT
 document.addEventListener('DOMContentLoaded', () => {
   showPage('accueil');
-  testiUpdate();
 });
 </script>
 
