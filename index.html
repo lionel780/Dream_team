@@ -32,6 +32,10 @@ tailwind.config = {
   .font-display { font-family: 'Oswald', sans-serif; letter-spacing: 0.02em; }
   .page { display: none; }
   .page.active { display: block; animation: fadeIn 0.5s ease; }
+  
+  @media (max-width: 768px) {
+    .font-display { font-size: 0.8em; }
+  }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   .carousel-track { display: flex; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
   .carousel-slide { min-width: 100%; }
@@ -830,9 +834,9 @@ tailwind.config = {
           <p class="text-gray-600 text-sm">Apprendre à donner le meilleur de soi-même, repousser ses limites, progresser chaque jour.</p>
         </div>
         <div class="bg-sand rounded-xl p-8 text-center hover-lift">
-          <div class="text-5xl mb-4">📚</div>
-          <h3 class="font-display text-xl font-bold mb-3 text-navy">Éducation</h3>
-          <p class="text-gray-600 text-sm">Le sport au service de l'éducation. Le double projet sport-études est au cœur de notre mission.</p>
+          <div class="text-5xl mb-4">⚽</div>
+          <h3 class="font-display text-xl font-bold mb-3 text-orange">Avenir</h3>
+          <p class="text-gray-300 text-sm">Notre mission : préparer l’avenir. Une jeune académie tournée vers la formation sportive et les joueurs de demain.</p>
         </div>
       </div>
     </div>
@@ -862,44 +866,82 @@ tailwind.config = {
     </div>
   </section>
 
-  <section class="py-24 bg-white">
+  <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <img src="Screenshot 2026-10-11 161652.png" alt="Dream Team Beach Academy" class="h-20 w-auto mx-auto mb-6 logo-img">
-        <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6">Galerie</h2>
+      <div class="text-center mb-12">
+        <img src="Screenshot 2026-10-11 161652.png" alt="Dream Team Beach Academy" class="h-16 w-auto mx-auto mb-4 logo-img">
+        <h2 class="font-display text-3xl md:text-4xl font-bold uppercase mb-4">Galerie</h2>
         <div class="w-20 h-1 bg-orange mx-auto"></div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="photo-031.jpeg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
+      
+      <div class="relative h-[400px] md:h-[500px] lg:h-[600px] bg-sand rounded-2xl overflow-hidden shadow-2xl">
+        <div id="gallery-carousel" class="absolute inset-0 flex transition-opacity duration-1000">
+          <div class="gallery-slide absolute inset-0 opacity-100 transition-opacity duration-1000">
+            <img src="photo-031.jpeg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="photo-036.jpeg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="photo-059.jpeg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="photo-060.jpeg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="photo-062.jpeg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="photo-063.jpeg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="photo-066.jpeg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="photo-076.jpeg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="photo-085.jpeg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="photo-087.jpeg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="equipe1.jpg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="equipe2.jpg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="equipe4.jpg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="equipe5.jpg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="banniere.png" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="casting.png" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="match_day.jpg" class="w-full h-full object-cover" alt="Galerie">
+          </div>
+          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+            <img src="reach_academy.png" class="w-full h-full object-cover" alt="Galerie">
+          </div>
         </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="photo-036.jpeg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
+        
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+          <div class="gallery-dot w-3 h-3 rounded-full bg-white opacity-50 cursor-pointer transition-opacity" data-index="0"></div>
+          <div class="gallery-dot w-3 h-3 rounded-full bg-white opacity-50 cursor-pointer transition-opacity" data-index="1"></div>
+          <div class="gallery-dot w-3 h-3 rounded-full bg-white opacity-50 cursor-pointer transition-opacity" data-index="2"></div>
+          <div class="gallery-dot w-3 h-3 rounded-full bg-white opacity-50 cursor-pointer transition-opacity" data-index="3"></div>
+          <div class="gallery-dot w-3 h-3 rounded-full bg-white opacity-50 cursor-pointer transition-opacity" data-index="4"></div>
         </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="photo-059.jpeg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
-        </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="photo-060.jpeg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
-        </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="photo-062.jpeg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
-        </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="photo-063.jpeg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
-        </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="photo-066.jpeg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
-        </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="photo-076.jpeg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
-        </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="photo-076.jpeg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
-        </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="photo-085.jpeg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
-        </div>
+      </div>
+    </div>
+  </section>
         <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
           <img src="photo-087.jpeg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
         </div>
@@ -1432,6 +1474,30 @@ function showPage(pageId) {
 function toggleMobile() {
   document.getElementById('mobile-menu').classList.toggle('hidden');
 }
+
+// GALLERY CAROUSEL
+let galleryIndex = 0;
+const gallerySlides = document.querySelectorAll('.gallery-slide');
+const galleryDots = document.querySelectorAll('.gallery-dot');
+
+function galleryGo(index) {
+  gallerySlides.forEach((slide, i) => {
+    slide.style.opacity = i === index ? '1' : '0';
+  });
+  galleryDots.forEach((dot, i) => {
+    dot.style.opacity = i === index ? '1' : '0.5';
+  });
+  galleryIndex = index;
+}
+
+setInterval(() => {
+  galleryIndex = (galleryIndex + 1) % gallerySlides.length;
+  galleryGo(galleryIndex);
+}, 3000);
+
+galleryDots.forEach((dot, index) => {
+  dot.addEventListener('click', () => galleryGo(index));
+});
 
 // INIT
 document.addEventListener('DOMContentLoaded', () => {
