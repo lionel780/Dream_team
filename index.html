@@ -175,6 +175,16 @@ tailwind.config = {
     background: rgba(242, 101, 34, 0.15);
     border-color: rgba(242, 101, 34, 0.3);
   }
+
+  /* ✅ AJOUT : effet hover générique pour les icônes sociales */
+  .social-icon-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .social-icon-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+  }
+  .social-icon-btn:hover.facebook { background: #1877F2; }
+  .social-icon-btn:hover.tiktok { background: #000000; }
 </style>
 </head>
 <body class="bg-sand text-navy">
@@ -324,9 +334,28 @@ tailwind.config = {
             </div>
           </div>
 
-          <div class="flex flex-wrap gap-4">
+          <div class="flex flex-wrap gap-4 mb-8">
             <a onclick="showPage('academy')" class="cursor-pointer bg-orange hover:bg-gold hover:text-navy text-white px-8 py-4 rounded-full font-bold uppercase text-sm tracking-wider transition">Découvrir l'académie</a>
             <a onclick="showPage('actualites')" class="cursor-pointer border-2 border-white text-white hover:bg-white hover:text-navy px-8 py-4 rounded-full font-bold uppercase text-sm tracking-wider transition">Voir les vidéos</a>
+          </div>
+
+          <!-- ✅ AJOUT : Réseaux sociaux sur la page d'accueil -->
+          <div class="flex items-center gap-4 pt-6 border-t border-white/20">
+            <span class="text-xs uppercase tracking-widest text-gray-300 font-semibold">Suivez-nous</span>
+            <div class="flex gap-3">
+              <a href="https://www.facebook.com/profile.php?id=61586701161973" target="_blank" rel="noopener" aria-label="Facebook"
+                 class="social-icon-btn facebook w-11 h-11 bg-white/10 backdrop-blur border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https://www.tiktok.com/@dreamngft9e?lang=fr" target="_blank" rel="noopener" aria-label="TikTok"
+                 class="social-icon-btn tiktok w-11 h-11 bg-white/10 backdrop-blur border border-white/20 rounded-full flex items-center justify-center hover:border-white transition">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -463,7 +492,7 @@ tailwind.config = {
     </div>
   </section>
 
-</div> <!-- ✅ CORRECTION : fermeture de #page-accueil -->
+</div> <!-- ✅ fermeture de #page-accueil -->
 
 
 <!-- ============================================================ -->
@@ -867,110 +896,67 @@ tailwind.config = {
   </section>
 
   <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
+    <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-12">
         <img src="Screenshot 2026-10-11 161652.png" alt="Dream Team Beach Academy" class="h-16 w-auto mx-auto mb-4 logo-img">
         <h2 class="font-display text-3xl md:text-4xl font-bold uppercase mb-4">Galerie</h2>
         <div class="w-20 h-1 bg-orange mx-auto"></div>
       </div>
       
-      <div class="relative h-[400px] md:h-[500px] lg:h-[600px] bg-sand rounded-2xl overflow-hidden shadow-2xl">
-        <div id="gallery-carousel" class="absolute inset-0 flex transition-opacity duration-1000">
-          <div class="gallery-slide absolute inset-0 opacity-100 transition-opacity duration-1000">
-            <img src="photo-031.jpeg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="photo-036.jpeg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="photo-059.jpeg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="photo-060.jpeg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="photo-062.jpeg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="photo-063.jpeg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="photo-066.jpeg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="photo-076.jpeg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="photo-085.jpeg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="photo-087.jpeg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="equipe1.jpg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="equipe2.jpg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="equipe4.jpg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="equipe5.jpg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="banniere.png" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="casting.png" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="match_day.jpg" class="w-full h-full object-cover" alt="Galerie">
-          </div>
-          <div class="gallery-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
-            <img src="reach_academy.png" class="w-full h-full object-cover" alt="Galerie">
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="photo-031.jpeg" class="w-full h-64 object-cover" alt="Galerie">
         </div>
-        
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-          <div class="gallery-dot w-3 h-3 rounded-full bg-white opacity-50 cursor-pointer transition-opacity" data-index="0"></div>
-          <div class="gallery-dot w-3 h-3 rounded-full bg-white opacity-50 cursor-pointer transition-opacity" data-index="1"></div>
-          <div class="gallery-dot w-3 h-3 rounded-full bg-white opacity-50 cursor-pointer transition-opacity" data-index="2"></div>
-          <div class="gallery-dot w-3 h-3 rounded-full bg-white opacity-50 cursor-pointer transition-opacity" data-index="3"></div>
-          <div class="gallery-dot w-3 h-3 rounded-full bg-white opacity-50 cursor-pointer transition-opacity" data-index="4"></div>
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="photo-036.jpeg" class="w-full h-64 object-cover" alt="Galerie">
         </div>
-      </div>
-    </div>
-  </section>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="photo-087.jpeg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="photo-059.jpeg" class="w-full h-64 object-cover" alt="Galerie">
         </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="equipe1.jpg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="photo-060.jpeg" class="w-full h-64 object-cover" alt="Galerie">
         </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="equipe2.jpg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="photo-062.jpeg" class="w-full h-64 object-cover" alt="Galerie">
         </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="equipe1.jpg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="photo-063.jpeg" class="w-full h-64 object-cover" alt="Galerie">
         </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="equipe4.jpg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="photo-066.jpeg" class="w-full h-64 object-cover" alt="Galerie">
         </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="equipe5.jpg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="photo-076.jpeg" class="w-full h-64 object-cover" alt="Galerie">
         </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="banniere.png" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="photo-085.jpeg" class="w-full h-64 object-cover" alt="Galerie">
         </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="casting.png" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="photo-087.jpeg" class="w-full h-64 object-cover" alt="Galerie">
         </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="match_day.jpg" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="equipe1.jpg" class="w-full h-64 object-cover" alt="Galerie">
         </div>
-        <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
-          <img src="reach_academy.png" class="w-full h-64 object-cover hover:scale-110 transition-transform duration-500" alt="Galerie">
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="equipe2.jpg" class="w-full h-64 object-cover" alt="Galerie">
+        </div>
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="equipe4.jpg" class="w-full h-64 object-cover" alt="Galerie">
+        </div>
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="equipe5.jpg" class="w-full h-64 object-cover" alt="Galerie">
+        </div>
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="banniere.png" class="w-full h-64 object-cover" alt="Galerie">
+        </div>
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="casting.png" class="w-full h-64 object-cover" alt="Galerie">
+        </div>
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="match_day.jpg" class="w-full h-64 object-cover" alt="Galerie">
+        </div>
+        <div class="gallery-item rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 cursor-pointer">
+          <img src="reach_academy.png" class="w-full h-64 object-cover" alt="Galerie">
         </div>
       </div>
     </div>
@@ -1328,13 +1314,21 @@ tailwind.config = {
             <div><div class="font-bold">Horaires</div><div class="text-gray-600">Lun-Ven : 9h - 19h / Sam : 9h - 13h</div></div>
           </div>
         </div>
+        
+        <!-- ✅ MODIF : Vrais logos Facebook & TikTok sur la page Contact -->
         <h3 class="font-display text-2xl font-bold uppercase mb-4">Réseaux sociaux</h3>
-        <div class="flex gap-6">
-          <a href="https://www.facebook.com/profile.php?id=61586701161973" target="_blank" class="w-16 h-16 bg-orange text-white rounded-full flex items-center justify-center hover:bg-gold hover:text-navy transition font-bold text-2xl shadow-lg">
-            f
+        <div class="flex gap-4">
+          <a href="https://www.facebook.com/profile.php?id=61586701161973" target="_blank" rel="noopener" aria-label="Facebook"
+             class="social-icon-btn facebook w-16 h-16 bg-navy text-white rounded-full flex items-center justify-center hover:text-white transition shadow-lg">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
           </a>
-          <a href="https://www.tiktok.com/@dreamngft9e?lang=fr" target="_blank" class="w-16 h-16 bg-orange text-white rounded-full flex items-center justify-center hover:bg-gold hover:text-navy transition font-bold text-2xl shadow-lg">
-            tt
+          <a href="https://www.tiktok.com/@dreamngft9e?lang=fr" target="_blank" rel="noopener" aria-label="TikTok"
+             class="social-icon-btn tiktok w-16 h-16 bg-navy text-white rounded-full flex items-center justify-center hover:text-white transition shadow-lg">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+            </svg>
           </a>
         </div>
       </div>
@@ -1413,9 +1407,21 @@ tailwind.config = {
       <div>
         <img src="Screenshot 2026-10-11 161652.png" alt="Dream Team Beach Academy" class="h-24 w-auto mb-6 logo-img">
         <p class="text-gray-400 text-sm mb-6">L'excellence du football de plage depuis 2016. Formation, discipline, passion.</p>
+        
+        <!-- ✅ MODIF : Vrais logos Facebook & TikTok dans le footer -->
         <div class="flex gap-3">
-          <a href="https://www.facebook.com/profile.php?id=61586701161973" target="_blank" class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-orange transition text-sm">f</a>
-          <a href="https://www.tiktok.com/@dreamngft9e?lang=fr" target="_blank" class="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-orange transition text-sm">tt</a>
+          <a href="https://www.facebook.com/profile.php?id=61586701161973" target="_blank" rel="noopener" aria-label="Facebook"
+             class="social-icon-btn facebook w-11 h-11 bg-white/10 rounded-full flex items-center justify-center hover:text-white transition">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com/@dreamngft9e?lang=fr" target="_blank" rel="noopener" aria-label="TikTok"
+             class="social-icon-btn tiktok w-11 h-11 bg-white/10 rounded-full flex items-center justify-center hover:text-white transition">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+            </svg>
+          </a>
         </div>
       </div>
       <div>
@@ -1474,30 +1480,6 @@ function showPage(pageId) {
 function toggleMobile() {
   document.getElementById('mobile-menu').classList.toggle('hidden');
 }
-
-// GALLERY CAROUSEL
-let galleryIndex = 0;
-const gallerySlides = document.querySelectorAll('.gallery-slide');
-const galleryDots = document.querySelectorAll('.gallery-dot');
-
-function galleryGo(index) {
-  gallerySlides.forEach((slide, i) => {
-    slide.style.opacity = i === index ? '1' : '0';
-  });
-  galleryDots.forEach((dot, i) => {
-    dot.style.opacity = i === index ? '1' : '0.5';
-  });
-  galleryIndex = index;
-}
-
-setInterval(() => {
-  galleryIndex = (galleryIndex + 1) % gallerySlides.length;
-  galleryGo(galleryIndex);
-}, 3000);
-
-galleryDots.forEach((dot, index) => {
-  dot.addEventListener('click', () => galleryGo(index));
-});
 
 // INIT
 document.addEventListener('DOMContentLoaded', () => {
