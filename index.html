@@ -1481,6 +1481,35 @@ function toggleMobile() {
   document.getElementById('mobile-menu').classList.toggle('hidden');
 }
 
+// GALLERY ANIMATION
+const galleryPhotos = document.querySelectorAll('.gallery-photo');
+const galleryContainer = document.getElementById('gallery-container');
+
+function shuffleGallery() {
+  galleryPhotos.forEach(photo => {
+    photo.style.opacity = '0';
+    photo.style.transform = 'scale(0.8)';
+  });
+  
+  setTimeout(() => {
+    const photosArray = Array.from(galleryPhotos);
+    photosArray.sort(() => Math.random() - 0.5);
+    
+    photosArray.forEach(photo => {
+      galleryContainer.appendChild(photo);
+    });
+    
+    galleryPhotos.forEach((photo, index) => {
+      setTimeout(() => {
+        photo.style.opacity = '1';
+        photo.style.transform = 'scale(1)';
+      }, index * 100);
+    });
+  }, 500);
+}
+
+setInterval(shuffleGallery, 4000);
+
 // INIT
 document.addEventListener('DOMContentLoaded', () => {
   showPage('accueil');
